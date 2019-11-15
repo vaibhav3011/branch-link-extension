@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setLink } from "./actions/actionCreators";
+import { setLink } from "../actions/actionCreators";
 import axios from "axios";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import Header from "./components/Header";
+import Header from "./Header";
 
 const headerString = "Link Creator";
 

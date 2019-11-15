@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "./actions/actionCreators";
+import { login } from "../actions/actionCreators";
 
 class Landing extends Component {
 	componentDidMount() {

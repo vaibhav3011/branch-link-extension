@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import ProtectedRoute from "./ProtectedRoute";
-import Landing from "./Landing";
-import AddKey from "./AddKey";
-import ChangeKey from "./ChangeKey";
-import LinkCreate from "./LinkCreate";
+import Landing from "./components/Landing";
+import AddChangeKey from "./components/AddChangeKey";
+import LinkCreate from "./components/LinkCreate";
 import "./App.css";
 import "./common.css";
 import { addBranchKey, login, setLinkObject } from "./actions/actionCreators";
@@ -35,8 +34,16 @@ class App extends Component {
             <div className="App">
                 <Switch>
                     <Route exact path="/" component={Landing}/>
-                    <ProtectedRoute path="/add-key" component={AddKey}/>
-                    <ProtectedRoute path="/change-key" component={ChangeKey}/>
+                    <ProtectedRoute
+                        path="/add-key"
+                        component={(props) => <AddChangeKey {...props} type="addKey" />}
+                    />
+                    <ProtectedRoute
+                        path="/change-key"
+                        component={(props) => <AddChangeKey {...props} type="changeKey" />}
+                    />
+                    {/*<ProtectedRoute path="/add-key" component={AddKey} type="addKey"/>*/}
+                    {/*<ProtectedRoute path="/change-key" component={ChangeKey} type="changeKey"/>*/}
                     <ProtectedRoute path="/link-create" component={LinkCreate}/>
                     <Route component={FourOhFour}/>
                 </Switch>
