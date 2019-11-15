@@ -14,24 +14,33 @@ const divStyle = {
 
 class LinkCreate extends Component {
 
-	state = {
-        flags: {
-            link_created: false,
-            edit_clicked: false
-        },
-        linkData: {
-            alias: "",
-            campaign: "",
-            channel: "",
-            $desktop_url: "",
-            data: [
-                {
-                    key: "$web_only",
-                    val: true
-                }
-            ]
-        }
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            flags: {
+                link_created: false,
+                edit_clicked: false
+            },
+            linkData: {
+                alias: "",
+                campaign: "",
+                channel: "",
+                $desktop_url: "",
+                data: [
+                    {
+                        key: "$web_only",
+                        val: true
+                    }
+                ]
+            }
+        };
+        this.updateFormRootInput = this.updateFormRootInput.bind(this);
+        this.saveLink = this.saveLink.bind(this);
+        this.updateLinkData = this.updateLinkData.bind(this);
+        this.openEditForm = this.openEditForm.bind(this);
+        this.cancelEditForm = this.cancelEditForm.bind(this);
+        this.handleLinkDataUpdate = this.handleLinkDataUpdate.bind(this);
+    }
 
     updateFormRootInput(event) {
         let linkData = this.state.linkData;
@@ -311,9 +320,9 @@ class LinkCreate extends Component {
                             Deeplink Data
                         </h5>
 
-                        <div class="col-sm-12 row">
-                            <div class="col-sm-6 form-label">Key</div>
-                            <div class="col-sm-6 p-h-sm form-label">Value</div>
+                        <div className="col-sm-12 row">
+                            <div className="col-sm-6 form-label">Key</div>
+                            <div className="col-sm-6 p-h-sm form-label">Value</div>
                         </div>
 
                         {this.state.linkData.data.map((obj, idx) => {
